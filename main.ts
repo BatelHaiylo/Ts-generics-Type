@@ -114,3 +114,33 @@ function getEvenNum(num:number): number[]{
     return evenArr
 }
 console.log(getEvenNum(20))
+
+class product {
+    width: number = 0;
+    lenght: number = 0;
+    weight: number = 0;
+    price: number = 0;
+    private isOrderd : boolean = true
+    constructor(width: number , lenght: number , weight: number, price: number){
+        this.width = width;
+        this.lenght = lenght;
+        this.weight = weight;
+        this.price = price;
+    }
+    get getIsOrdered(){
+        return this.isOrderd
+    }
+    set setIsOrdered(value: boolean){
+        this.isOrderd = value
+    }
+    static getProduct(isExpensive: boolean = true, ...proudocts: product[]): product{
+        proudocts ? proudocts.sort((a,b) => a.price - b.price) : []
+        return isExpensive ?  proudocts[proudocts.length-1] : proudocts[0]
+    }
+}
+const Bamba = new product(20,12,82,56)
+const Bisli = new product(2,45,3,7)
+console.log(Bamba.setIsOrdered = false)
+console.log(Bisli.setIsOrdered = false)
+console.log(Bisli)
+console.log(product.getProduct(false, Bamba,Bisli))
